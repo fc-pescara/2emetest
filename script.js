@@ -1,52 +1,49 @@
-const poids = document.querySelector('.poids');
-const taille = document.querySelector('.taille');
-const button = document.querySelector('.button');
-const resultat = document.querySelector('.resultat');
-const imc = document.querySelector('.imc');
+const Name = document.querySelector('.Name');
+const Valeur = document.querySelector('.Valeur');
+
+const ButtonCreer = document.querySelector('.ButtonCreer');
+const Afficher = document.querySelector('.Afficher');
+
+ButtonCreer.addEventListener('click', () => {
+    const DataName = Name.value;
+    const DataValeur = Valeur.value;
+
+    const DataFinal = DataName + DataValeur;
+
+    if (DataFinal) {
+        const newDiv = document.createElement('div');
+        newDiv.className = 'created-div'; // Classe pour personnalisation si besoin
+    
+        // Créer un paragraphe à l'intérieur de la div
+        const paragraph = document.createElement('p');
+        paragraph.textContent = `Nom : ${DataName}, Valeur : ${DataValeur}`;
+
+    // Ajouter le paragraphe dans la nouvelle div
+        newDiv.appendChild(paragraph);
+
+        // Ajouter la div dans le conteneur principal
+        Afficher.appendChild(newDiv);
+
+      newDiv.style.display = 'none';
 
 
 
-button.addEventListener('click', () => {
-   
-    const poidsNumber = Number(poids.value); // Convertit la valeur en nombre
-    const tailleNumber = Number(taille.value) / 100; // Convertir en mètres; // Convertit la valeur en nombre
-    const CalculImc = poidsNumber / (tailleNumber * tailleNumber) ; // CALCUL IMC
+      Afficher.addEventListener('click',() => {
 
+        newDiv.style.display = 'block'
+    
+    
+    })
 
-    /// 
-    if (poidsNumber > 0 && tailleNumber > 0) {
-
-
-        imc.textContent  = `Votre IMC est : ${CalculImc.toFixed(2)}`; // Affiche l'IMC avec 2 décimales//
-         }
-
-
-         if  (CalculImc > 12 && CalculImc < 15) {
-            resultat.textContent = "Votre IMC est bon.";
-            resultat.style.color = "green"}
-
-            else if  (CalculImc > 19.51 && CalculImc < 22 ) {
-                resultat.textContent = "Votre IMC est moyen.";
-                resultat.style.color = "orange"} 
-
-               else if  (CalculImc > 22.01 && CalculImc < 25  ) {
-                    resultat.textContent = "Votre IMC est en surpoids.";
-                    resultat.style.color = "blue";}
-
-                 else if     (CalculImc > 25.01 && CalculImc < 30 ) {
-                        resultat.textContent = "Votre IMC est obese.";
-                        resultat.style.color = "red";}
-
-                       else if   (CalculImc > 30.01 ) {
-                            resultat.textContent = "Votre IMC est hyper obese.";
-                            resultat.style.color = "black";}
-
-
-
-         })
+    
+    }
 
 
 
 
 
-            
+});
+
+
+// QUAND LES VALUE DE NAME ET DE VALEUR SONT COMPLETE , EN CLIQUANT sur CREER  IL AFFICHE UNE DIV AVEC LES VALEURS  JE LES MET EN DISPLAY  NONE 
+// ET PUIS EN CLICQUANT SUR AFFICHER JE MET EN DISPLAY :*
